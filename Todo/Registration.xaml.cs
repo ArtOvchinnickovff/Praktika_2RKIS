@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Todo.Repository;
 
 namespace Todo
 {
@@ -19,9 +20,11 @@ namespace Todo
     /// </summary>
     public partial class Registration : Window
     {
+        private UserRepository userRepository;
         public Registration()
         {
             InitializeComponent();
+             userRepository = new UserRepository();
 
             EmailTextBox1.Text = "Введите почту";
             EmailTextBox1.Foreground = new SolidColorBrush(Colors.Gray);
@@ -106,8 +109,10 @@ namespace Todo
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();  
+            mainWindow.Show();
         }
+
+
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
@@ -115,18 +120,42 @@ namespace Todo
 
             string email = EmailTextBox1.Text;
             string password = PasswordTextBox1.Text;
-
+            string username = NameTextBox.Text;
 
             bool isEmailValid = validator.IsValidEmail(email);
             bool isPasswordValid = validator.IsValidPassword(password);
 
-
             if (isEmailValid && isPasswordValid)
             {
-                Main_empty main_Empty = new Main_empty();
-                main_Empty.ShowDialog();
+                try
+                {
+                    // Попробуйте зарегистрировать пользователя
+                    bool isRegistered = userRepository.RegisterUser(username, password, email);
 
-
+                    if (isRegistered)
+                    {
+                        MessageBox.Show("Регистрация успешна!");
+                        Main_empty main_Empty = new Main_empty();
+                        main_Empty.ShowDialog();
+                        this.Close(); // Закрыть форму регистрации после успешной регистрации
+                    }
+                    else
+                    {
+                        MessageBox.Show("Пользователь с таким логином уже существует!");
+                    }
+                }
+                catch (ArgumentNullException ex)
+                {
+                    MessageBox.Show("Ошибка: одно из полей не заполнено. " + ex.Message);
+                }
+                catch (FormatException ex)
+                {
+                    MessageBox.Show("Ошибка: неверный формат ввода. " + ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Произошла ошибка при регистрации: " + ex.Message);
+                }
             }
             else
             {
