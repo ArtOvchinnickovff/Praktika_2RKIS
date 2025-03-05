@@ -87,7 +87,7 @@
       <DependentUpon>TaskCreation.xaml</DependentUpon>
     </Compile>
     <Compile Include="Todo.Repository\UserRepository.cs" />
-    <Page Include="Dictionary1.xaml">
+    <Page Include="ResourceDictionary1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
