@@ -73,7 +73,7 @@
     <Compile Include="History.xaml.cs">
       <DependentUpon>History.xaml</DependentUpon>
     </Compile>
-    <Compile Include="InputValidator.cs" />
+    <Compile Include="Todo.Repository\InputValidator.cs" />
     <Compile Include="Main empty.xaml.cs">
       <DependentUpon>Main empty.xaml</DependentUpon>
     </Compile>

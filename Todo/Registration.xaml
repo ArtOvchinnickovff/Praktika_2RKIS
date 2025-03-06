@@ -6,51 +6,39 @@
         xmlns:local="clr-namespace:Todo"
         mc:Ignorable="d"
         Title="Registration" Height="600" Width="800" WindowStartupLocation="CenterScreen">
+
     <Window.Resources>
-        <Style TargetType="Button">
-            <Setter Property="Background" Value="#FFF96060"/>
-            <Setter Property="BorderBrush" Value="#FFF96060"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="FontSize" Value="18"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" 
-                                BorderBrush="{TemplateBinding BorderBrush}" 
-                                BorderThickness="{TemplateBinding BorderThickness}" 
-                                CornerRadius="20">
-                            <ContentPresenter HorizontalAlignment="Center" 
-                                              VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
+        <ResourceDictionary Source="Resources.xaml" />
     </Window.Resources>
+
     <Grid Margin="-23,0,-31,-31"
-            Width="835"
-           Height="606">
+          Width="835"
+          Height="606">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="404*" />
             <ColumnDefinition Width="23*" />
         </Grid.ColumnDefinitions>
-        <Image HorizontalAlignment="Left" Height="150" Margin="66,36,0,0" VerticalAlignment="Top" Width="150" RenderTransformOrigin="0.501,0.505" Source="/Рисунок1.png"/>
-        <Label Content="Welcome back!" HorizontalAlignment="Left" Height="49" Margin="472,19,0,0" VerticalAlignment="Top" Width="226" FontSize="32"/>
-        <Label Content="Имя пользователя" HorizontalAlignment="Left" Height="37" Margin="413,69,0,0" VerticalAlignment="Top" Width="191" FontSize="20" RenderTransformOrigin="0.463,0.528"/>
-        <Border Background="#F96060" BorderBrush="#F96060" BorderThickness="1" HorizontalAlignment="Left" Height="56" Margin="400,389,0,0" VerticalAlignment="Top" Width="370" CornerRadius="20,20,5,5">
-            <Button Content="Зарегистрироваться" HorizontalAlignment="Center" Height="48" VerticalAlignment="Center" Width="279" Background="#FFF96060" BorderBrush="#FFF96060" Foreground="White" FontSize="18" Click="Button_Click_1"/>
-        </Border>
-        <Border Background="#F96060" BorderBrush="#F96060" BorderThickness="1" HorizontalAlignment="Left" Height="56" Margin="400,450,0,0" VerticalAlignment="Top" Width="370" CornerRadius="5,5,20,20">
-            <Button Content="Назад" HorizontalAlignment="Center" Height="48" VerticalAlignment="Center" Width="274" Background="#FFF96060" BorderBrush="#FFF96060" Foreground="White" FontSize="18" Click="Button_Click"/>
-        </Border>
-        <Label Content="Ваша почта" HorizontalAlignment="Left" Height="36" Margin="419,146,0,0" VerticalAlignment="Top" Width="118" FontSize="20" RenderTransformOrigin="0.483,0.74"/>
-        <TextBox x:Name="NameTextBox" BorderBrush="#EDEDED" BorderThickness="0,0,0,2" Margin="418,111,45,465" FontSize="16" GotFocus="NameTextBox_GotFocus" LostFocus="NameTextBox_LostFocus"/>
-        <TextBox x:Name="EmailTextBox1" BorderBrush="#EDEDED" BorderThickness="0,0,0,2" Margin="418,182,45,391" FontSize="16" GotFocus="EmailTextBox1_GotFocus" LostFocus="EmailTextBox1_LostFocus"/>
-        <TextBox x:Name="PasswordTextBox1" BorderBrush="#EDEDED" BorderThickness="0,0,0,2" Margin="419,259,45,311" FontSize="16" GotFocus="PasswordTextBox1_GotFocus" LostFocus="PasswordTextBox1_LostFocus"/>
-        <Label Content="Пароль" HorizontalAlignment="Left" Height="39" Margin="419,220,0,0" VerticalAlignment="Top" Width="96" FontSize="20"/>
-        <Label Content="Повторите пароль" HorizontalAlignment="Left" Height="42" Margin="418,300,0,0" VerticalAlignment="Top" Width="184" FontSize="20"/>
-        <TextBox x:Name="ConfirmPasswordTextBox" BorderBrush="#EDEDED" BorderThickness="0,0,0,2" Margin="419,342,45,233" FontSize="16" GotFocus="ConfirmPasswordTextBox_GotFocus" LostFocus="ConfirmPasswordTextBox_LostFocus"/>
 
+        <!-- Элементы управления -->
+        <Image HorizontalAlignment="Left" Height="150" Margin="66,36,0,0" VerticalAlignment="Top" Width="150" RenderTransformOrigin="0.501,0.505" Source="/Рисунок1.png"/>
+        <Label Content="Welcome back!" HorizontalAlignment="Left" Height="49" Margin="472,19,0,0" VerticalAlignment="Top" Width="226"/>
+        <Label Content="Имя пользователя" HorizontalAlignment="Left" Height="37" Margin="413,69,0,0" VerticalAlignment="Top" Width="191"/>
+
+        <!-- Кнопки с использованием стилей из ResourceDictionary -->
+        <Border Background="{StaticResource PrimaryColor}" BorderBrush="{StaticResource PrimaryColor}" BorderThickness="1" HorizontalAlignment="Left" Height="56" Margin="400,389,0,0" VerticalAlignment="Top" Width="370" CornerRadius="20,20,5,5">
+            <Button Content="Зарегистрироваться" HorizontalAlignment="Center" Height="48" VerticalAlignment="Center" Width="279" Click="Button_Click_1"/>
+        </Border>
+        <Border Background="{StaticResource PrimaryColor}" BorderBrush="{StaticResource PrimaryColor}" BorderThickness="1" HorizontalAlignment="Left" Height="56" Margin="400,450,0,0" VerticalAlignment="Top" Width="370" CornerRadius="5,5,20,20">
+            <Button Content="Назад" HorizontalAlignment="Center" Height="48" VerticalAlignment="Center" Width="274" Click="Button_Click"/>
+        </Border>
+
+        <!-- Текстовые поля и метки -->
+        <Label Content="Ваша почта" HorizontalAlignment="Left" Height="36" Margin="419,146,0,0" VerticalAlignment="Top" Width="118"/>
+        <TextBox x:Name="NameTextBox" Margin="418,111,45,465" GotFocus="NameTextBox_GotFocus" LostFocus="NameTextBox_LostFocus"/>
+        <TextBox x:Name="EmailTextBox1" Margin="418,182,45,391" GotFocus="EmailTextBox1_GotFocus" LostFocus="EmailTextBox1_LostFocus"/>
+        <TextBox x:Name="PasswordTextBox1" Margin="419,259,45,311" GotFocus="PasswordTextBox1_GotFocus" LostFocus="PasswordTextBox1_LostFocus"/>
+        <Label Content="Пароль" HorizontalAlignment="Left" Height="39" Margin="419,220,0,0" VerticalAlignment="Top" Width="96"/>
+        <Label Content="Повторите пароль" HorizontalAlignment="Left" Height="42" Margin="418,300,0,0" VerticalAlignment="Top" Width="184"/>
+        <TextBox x:Name="ConfirmPasswordTextBox" Margin="419,342,45,233" GotFocus="ConfirmPasswordTextBox_GotFocus" LostFocus="ConfirmPasswordTextBox_LostFocus"/>
     </Grid>
 </Window>
