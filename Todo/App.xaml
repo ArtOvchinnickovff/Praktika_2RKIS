@@ -4,7 +4,8 @@
              xmlns:local="clr-namespace:Todo"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <ResourceDictionary Source="Resources.xaml"/>
+        <ResourceDictionary Source="ResourceDictionary/Resources.xaml" />
+        
     </Application.Resources>
 </Application>
 

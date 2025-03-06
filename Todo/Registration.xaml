@@ -8,7 +8,7 @@
         Title="Registration" Height="600" Width="800" WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
-        <ResourceDictionary Source="Resources.xaml" />
+        <ResourceDictionary Source="ResourceDictionary/Resources.xaml" />
     </Window.Resources>
 
     <Grid Margin="-23,0,-31,-31"

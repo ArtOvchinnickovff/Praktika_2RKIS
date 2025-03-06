@@ -9,7 +9,7 @@
 
     <!-- Подключение ResourceDictionary -->
     <Window.Resources>
-        <ResourceDictionary Source="Resources.xaml" />
+        <ResourceDictionary Source="ResourceDictionary/Resources.xaml" />
     </Window.Resources>
 
     <Grid Margin="-23,0,-31,-31"
